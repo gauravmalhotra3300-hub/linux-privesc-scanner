@@ -1,0 +1,470 @@
+# Linux Privilege Escalation Scan (Kali)
+Date: 2026-01-03 00:23:46.649021
+
+## System Information
+User: root
+ID: uid=0(root) gid=0(root) groups=0(root)
+Kernel: Linux kali 6.17.10+kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.17.10-1kali1 (2025-12-08) x86_64 GNU/Linux
+OS release:
+PRETTY_NAME="Kali GNU/Linux Rolling"
+NAME="Kali GNU/Linux"
+VERSION_ID="2025.4"
+VERSION="2025.4"
+VERSION_CODENAME=kali-rolling
+ID=kali
+ID_LIKE=debian
+HOME_URL="https://www.kali.org/"
+SUPPORT_URL="https://forums.kali.org/"
+BUG_REPORT_URL="https://bugs.kali.org/"
+ANSI_COLOR="1;31"
+
+## SUID / SGID Binaries
+No SUID/SGID binaries found (or no permission to list).
+
+## World Writable Files/Directories
+[MEDIUM] World-writable dir: /tmp
+[MEDIUM] World-writable dir: /var/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-systemd-logind.service-1foBl7/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-apache2.service-Ai3OjC/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-haveged.service-cFQkCG/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-colord.service-FUESeu/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-polkit.service-r8Ocjy/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-ModemManager.service-enLSVv/tmp
+[MEDIUM] World-writable dir: /var/tmp/systemd-private-d36af780cdf94e6e9e201933e32fbc44-upower.service-YsbbVP/tmp
+[MEDIUM] World-writable dir: /var/lib/php/sessions
+
+## Sensitive File Permissions
+/etc/passwd: -rw-r--r-- 1 root root 3253 Dec  2 21:36 /etc/passwd
+/etc/shadow: -rw-r----- 1 root shadow 1448 Dec  2 21:36 /etc/shadow
+/etc/sudoers: -r--r----- 1 root root 1714 Aug 17 06:41 /etc/sudoers
+
+## Sudo Rights
+Matching Defaults entries for root on kali:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin, use_pty
+
+User root may run the following commands on kali:
+    (ALL : ALL) ALL
+
+## Cron Jobs
+### /etc/crontab
+-rw-r--r-- 1 root root 1042 Oct  5 14:36 /etc/crontab
+
+### /etc/cron.d
+total 36
+drwxr-xr-x   2 root root  4096 Dec 24 16:58 .
+drwxr-xr-x 180 root root 12288 Jan  2 00:36 ..
+-rw-r--r--   1 root root   188 Jul 30 15:39 e2scrub_all
+-rw-r--r--   1 root root   607 Jun  3  2025 john
+-rw-r--r--   1 root root   712 Dec  4  2024 php
+-rw-r--r--   1 root root   102 Oct  5 14:36 .placeholder
+-rw-r--r--   1 root root   400 Jan 15  2024 sysstat
+
+### /etc/cron.daily
+total 48
+drwxr-xr-x   2 root root  4096 Dec 24 16:57 .
+drwxr-xr-x 180 root root 12288 Jan  2 00:36 ..
+-rwxr-xr-x   1 root root   539 Jul 17 11:59 apache2
+-rwxr-xr-x   1 root root  1478 Nov 12 22:46 apt-compat
+-rwxr-xr-x   1 root root   123 Jul 17 11:28 dpkg
+-rwxr-xr-x   1 root root   377 Jul 14  2024 logrotate
+-rwxr-xr-x   1 root root  1395 May  2  2025 man-db
+-rw-r--r--   1 root root   102 Oct  5 14:36 .placeholder
+-rwxr-xr-x   1 root root   652 Dec  7  2020 plocate
+-rwxr-xr-x   1 root root   526 Jan 15  2024 sysstat
+
+### /etc/cron.hourly
+total 20
+drwxr-xr-x   2 root root  4096 Dec 24 16:57 .
+drwxr-xr-x 180 root root 12288 Jan  2 00:36 ..
+-rw-r--r--   1 root root   102 Oct  5 14:36 .placeholder
+
+### /etc/cron.weekly
+total 24
+drwxr-xr-x   2 root root  4096 Dec 24 16:57 .
+drwxr-xr-x 180 root root 12288 Jan  2 00:36 ..
+-rwxr-xr-x   1 root root  1055 May  2  2025 man-db
+-rw-r--r--   1 root root   102 Oct  5 14:36 .placeholder
+
+### /etc/cron.monthly
+total 20
+drwxr-xr-x   2 root root  4096 Dec 24 16:57 .
+drwxr-xr-x 180 root root 12288 Jan  2 00:36 ..
+-rw-r--r--   1 root root   102 Oct  5 14:36 .placeholder
+
+### /var/spool/cron
+total 12
+drwxr-xr-x 3 root root    4096 Dec  2 21:30 .
+drwxr-xr-x 3 root root    4096 Dec  2 21:30 ..
+drwx-wx--T 2 root crontab 4096 Oct  5 14:36 crontabs
+
+
+## Services (systemd)
+UNIT                                        LOAD      ACTIVE   SUB     DESCRIPTION
+  accounts-daemon.service                     loaded    active   running Accounts Service
+  apache2.service                             loaded    active   running The Apache HTTP Server
+  apparmor.service                            loaded    inactive dead    Load AppArmor profiles
+  apt-daily-upgrade.service                   loaded    inactive dead    Daily apt upgrade and clean activities
+  apt-daily.service                           loaded    inactive dead    Daily apt download activities
+● auditd.service                              not-found inactive dead    auditd.service
+  auth-rpcgss-module.service                  loaded    inactive dead    Kernel Module supporting RPCSEC_GSS
+  colord.service                              loaded    active   running Manage, Install and Generate Color Profiles
+● connman.service                             not-found inactive dead    connman.service
+● console-screen.service                      not-found inactive dead    console-screen.service
+  console-setup.service                       loaded    active   exited  Set console font and keymap
+  cron.service                                loaded    active   running Regular background program processing daemon
+  dbus.service                                loaded    active   running D-Bus System Message Bus
+  dpkg-db-backup.service                      loaded    inactive dead    Daily dpkg database backup service
+  e2scrub_all.service                         loaded    inactive dead    Online ext4 Metadata Check for All Filesystems
+  emergency.service                           loaded    inactive dead    Emergency Shell
+  fstrim.service                              loaded    inactive dead    Discard unused blocks on filesystems from /etc/fstab
+  getty-static.service                        loaded    inactive dead    getty on tty2-tty6 if dbus and logind are not available
+  getty@tty1.service                          loaded    active   running Getty on tty1
+  grub-install-devices.service                loaded    inactive dead    Set GRUB install devices if unset
+● gssproxy.service                            not-found inactive dead    gssproxy.service
+  haveged.service                             loaded    active   running Entropy Daemon based on the HAVEGE algorithm
+  ifupdown-pre.service                        loaded    active   exited  Helper to synchronize boot up for ifupdown
+  initrd-cleanup.service                      loaded    inactive dead    Cleaning Up and Shutting Down Daemons
+  initrd-parse-etc.service                    loaded    inactive dead    Mountpoints Configured in the Real Root
+  initrd-switch-root.service                  loaded    inactive dead    Switch Root
+  initrd-udevadm-cleanup-db.service           loaded    inactive dead    Cleanup udev Database
+● kbd.service                                 not-found inactive dead    kbd.service
+  keyboard-setup.service                      loaded    active   exited  Set the console keyboard layout
+  kmod-static-nodes.service                   loaded    active   exited  Create List of Static Device Nodes
+  ldconfig.service                            loaded    inactive dead    Rebuild Dynamic Linker Cache
+  lightdm.service                             loaded    active   running Light Display Manager
+  logrotate.service                           loaded    inactive dead    Rotate log files
+  man-db.service                              loaded    inactive dead    Daily man-db regeneration
+  mariadb.service                             loaded    active   running MariaDB 11.8.5 database server
+  ModemManager.service                        loaded    active   running Modem Manager
+  modprobe@configfs.service                   loaded    inactive dead    Load Kernel Module configfs
+  modprobe@dm_mod.service                     loaded    inactive dead    Load Kernel Module dm_mod
+  modprobe@drm.service                        loaded    inactive dead    Load Kernel Module drm
+  modprobe@efi_pstore.service                 loaded    inactive dead    Load Kernel Module efi_pstore
+  modprobe@fuse.service                       loaded    inactive dead    Load Kernel Module fuse
+  modprobe@loop.service                       loaded    inactive dead    Load Kernel Module loop
+  networking.service                          loaded    active   exited  Raise network interfaces
+  NetworkManager-wait-online.service          loaded    active   exited  Network Manager Wait Online
+  NetworkManager.service                      loaded    active   running Network Manager
+● nfs-server.service                          not-found inactive dead    nfs-server.service
+  nfs-utils.service                           loaded    inactive dead    NFS server and client services
+  pcscd.service                               loaded    inactive dead    PC/SC Smart Card Daemon
+  phpsessionclean.service                     loaded    inactive dead    Clean php session files
+  plocate-updatedb.service                    loaded    inactive dead    Update the plocate database
+  plymouth-quit-wait.service                  loaded    active   exited  Hold until boot process finishes up
+  plymouth-quit.service                       loaded    inactive dead    Terminate Plymouth Boot Screen
+  plymouth-read-write.service                 loaded    active   exited  Tell Plymouth To Write Out Runtime Data
+  plymouth-start.service                      loaded    active   exited  Show Plymouth Boot Screen
+  plymouth-switch-root.service                loaded    inactive dead    Plymouth switch root service
+  polkit.service                              loaded    active   running Authorization Manager
+  rc-local.service                            loaded    inactive dead    /etc/rc.local Compatibility
+  regenerate-ssh-host-keys.service            loaded    inactive dead    Regenerate SSH host keys
+  rescue.service                              loaded    inactive dead    Rescue Shell
+  rpc-gssd.service                            loaded    inactive dead    RPC security service for NFS client and server
+  rpc-statd-notify.service                    loaded    active   exited  Notify NFS peers of a restart
+  rpc-svcgssd.service                         loaded    inactive dead    RPC security service for NFS server
+  rtkit-daemon.service                        loaded    active   running RealtimeKit Scheduling Policy Service
+  smartmontools.service                       loaded    inactive dead    Self Monitoring and Reporting Technology (SMART) Daemon
+  ssh.service                                 loaded    inactive dead    OpenBSD Secure Shell server
+● syslog.service                              not-found inactive dead    syslog.service
+  systemd-ask-password-console.service        loaded    inactive dead    Dispatch Password Requests to Console
+  systemd-ask-password-plymouth.service       loaded    inactive dead    Forward Password Requests to Plymouth
+  systemd-ask-password-wall.service           loaded    inactive dead    Forward Password Requests to Wall
+  systemd-battery-check.service               loaded    inactive dead    Early Battery Level Check
+  systemd-binfmt.service                      loaded    active   exited  Set Up Additional Binary Formats
+  systemd-bsod.service                        loaded    inactive dead    Display Boot-Time Emergency Messages In Full Screen
+  systemd-confext-initrd.service              loaded    inactive dead    Merge System Configuration Images into /etc/
+  systemd-confext.service                     loaded    inactive dead    Merge System Configuration Images into /etc/
+  systemd-firstboot.service                   loaded    inactive dead    Initial Setup
+  systemd-fsck-root.service                   loaded    inactive dead    File System Check on Root Device
+  systemd-hibernate-clear.service             loaded    inactive dead    Clear Stale Hibernate Storage Info
+  systemd-hibernate-resume.service            loaded    inactive dead    Resume from hibernation
+  systemd-hostnamed.service                   loaded    inactive dead    Hostname Service
+  systemd-hwdb-update.service                 loaded    inactive dead    Rebuild Hardware Database
+  systemd-journal-catalog-update.service      loaded    inactive dead    Rebuild Journal Catalog
+  systemd-journal-flush.service               loaded    active   exited  Flush Journal to Persistent Storage
+  systemd-journald.service                    loaded    active   running Journal Service
+  systemd-logind.service                      loaded    active   running User Login Management
+  systemd-machine-id-commit.service           loaded    inactive dead    Save Transient machine-id to Disk
+  systemd-modules-load.service                loaded    active   exited  Load Kernel Modules
+  systemd-networkd-persistent-storage.service loaded    inactive dead    Enable Persistent Storage in systemd-networkd
+  systemd-networkd.service                    loaded    inactive dead    Network Management
+● systemd-oomd.service                        not-found inactive dead    systemd-oomd.service
+  systemd-pcrmachine.service                  loaded    inactive dead    TPM PCR Machine ID Measurement
+  systemd-pcrnvdone.service                   loaded    inactive dead    TPM PCR NvPCR Initialization Separator
+  systemd-pcrphase-initrd.service             loaded    inactive dead    TPM PCR Barrier (initrd)
+  systemd-pcrphase-sysinit.service            loaded    inactive dead    TPM PCR Barrier (Initialization)
+  systemd-pcrphase.service                    loaded    inactive dead    TPM PCR Barrier (User)
+  systemd-pcrproduct.service                  loaded    inactive dead    TPM NvPCR Product ID Measurement
+  systemd-pstore.service                      loaded    inactive dead    Platform Persistent Storage Archival
+  systemd-quotacheck-root.service             loaded    inactive dead    Root File System Quota Check
+  systemd-random-seed.service                 loaded    active   exited  Load/Save OS Random Seed
+  systemd-remount-fs.service                  loaded    active   exited  Remount Root and Kernel File Systems
+  systemd-rfkill.service                      loaded    inactive dead    Load/Save RF Kill Switch Status
+  systemd-soft-reboot.service                 loaded    inactive dead    Reboot System Userspace
+  systemd-sysctl.service                      loaded    active   exited  Apply Kernel Variables
+  systemd-sysext-initrd.service               loaded    inactive dead    Merge System Extension Images into /usr/ and /opt/
+  systemd-sysext.service                      loaded    inactive dead    Merge System Extension Images into /usr/ and /opt/
+  systemd-sysusers.service                    loaded    inactive dead    Create System Users
+  systemd-timesyncd.service                   loaded    inactive dead    Network Time Synchronization
+  systemd-tmpfiles-clean.service              loaded    inactive dead    Cleanup of Temporary Directories
+  systemd-tmpfiles-setup-dev-early.service    loaded    active   exited  Create Static Device Nodes in /dev gracefully
+  systemd-tmpfiles-setup-dev.service          loaded    active   exited  Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service              loaded    active   exited  Create System Files and Directories
+  systemd-tpm2-setup-early.service            loaded    inactive dead    Early TPM SRK Setup
+  systemd-tpm2-setup.service                  loaded    inactive dead    TPM SRK Setup
+  systemd-udev-load-credentials.service       loaded    active   exited  Load udev Rules from Credentials
+  systemd-udev-settle.service                 loaded    inactive dead    Wait for udev To Complete Device Initialization
+  systemd-udev-trigger.service                loaded    active   exited  Coldplug All udev Devices
+  systemd-udevd.service                       loaded    active   running Rule-based Manager for Device Events and Files
+  systemd-update-done.service                 loaded    inactive dead    Update is Completed
+  systemd-user-sessions.service               loaded    active   exited  Permit User Sessions
+● systemd-vconsole-setup.service              not-found inactive dead    systemd-vconsole-setup.service
+  udisks2.service                             loaded    active   running Disk Manager
+  upower.service                              loaded    active   running Daemon for power management
+  user-runtime-dir@1000.service               loaded    active   exited  User Runtime Directory /run/user/1000
+  user@1000.service                           loaded    active   running User Manager for UID 1000
+  virtualbox-guest-utils.service              loaded    active   running Virtualbox guest utils
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+124 loaded units listed.
+To show all installed unit files use 'systemctl list-unit-files'.
+
+### Potentially interesting service ExecStart lines
+accounts-daemon.service: ExecStart=/usr/libexec/accounts-daemon
+apache-htcacheclean.service: ExecStart=/usr/bin/htcacheclean -d $HTCACHECLEAN_DAEMON_INTERVAL -p $HTCACHECLEAN_PATH -l $HTCACHECLEAN_SIZE $HTCACHECLEAN_OPTIONS
+apache2.service: ExecStart=/usr/sbin/apachectl start
+apparmor.service: ExecStart=/lib/apparmor/apparmor.systemd reload
+apt-daily-upgrade.service: ExecStartPre=-/usr/lib/apt/apt-helper wait-online
+ExecStart=/usr/lib/apt/apt.systemd.daily install
+apt-daily.service: ExecStartPre=-/usr/lib/apt/apt-helper wait-online
+ExecStart=/usr/lib/apt/apt.systemd.daily update
+atftpd.service: ExecStart=/usr/sbin/in.tftpd $OPTIONS
+auth-rpcgss-module.service: ExecStart=/sbin/modprobe -q auth_rpcgss
+avahi-daemon.service: ExecStart=/usr/sbin/avahi-daemon -s
+blueman-mechanism.service: ExecStart=/usr/libexec/blueman-mechanism
+bluetooth.service: ExecStart=/usr/libexec/bluetooth/bluetoothd
+breakpoint-pre-basic.service: ExecStartPre=-plymouth --wait quit
+ExecStart=-/usr/bin/bash
+breakpoint-pre-mount.service: ExecStartPre=-plymouth --wait quit
+ExecStart=-/usr/bin/bash
+breakpoint-pre-switch-root.service: ExecStartPre=-plymouth --wait quit
+ExecStart=-/usr/bin/bash
+breakpoint-pre-udev.service: ExecStartPre=-plymouth --wait quit
+ExecStart=-/usr/bin/bash
+colord.service: ExecStart=/usr/libexec/colord
+console-getty.service: ExecStart=-/usr/sbin/agetty --noreset --noclear --issue-file=/etc/issue:/etc/issue.d:/run/issue.d:/usr/lib/issue.d --keep-baud 115200,57600,38400,9600 - ${TERM}
+console-setup.service: ExecStart=/lib/console-setup/console-setup.sh
+cron.service: ExecStart=/usr/sbin/cron -f $EXTRA_OPTS
+dbus-org.freedesktop.hostname1.service: ExecStart=/usr/lib/systemd/systemd-hostnamed
+dbus-org.freedesktop.locale1.service: ExecStart=/usr/lib/systemd/systemd-localed
+dbus-org.freedesktop.login1.service: ExecStart=/usr/lib/systemd/systemd-logind
+dbus-org.freedesktop.ModemManager1.service: ExecStart=/usr/sbin/ModemManager
+dbus-org.freedesktop.nm-dispatcher.service: ExecStart=/usr/libexec/nm-dispatcher
+dbus-org.freedesktop.timedate1.service: ExecStart=/usr/lib/systemd/systemd-timedated
+dbus-org.freedesktop.timesync1.service: ExecStart=/usr/lib/systemd/systemd-timesyncd
+dbus.service: ExecStart=/usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+debug-shell.service: ExecStart=/usr/bin/bash
+display-manager.service: ExecStart=/usr/sbin/lightdm
+dns2tcpd.service: ExecStart=/usr/bin/dns2tcpd -f /etc/dns2tcpd.conf
+dpkg-db-backup.service: ExecStart=/usr/libexec/dpkg/dpkg-db-backup
+e2scrub_all.service: ExecStart=/sbin/e2scrub_all
+e2scrub_reap.service: ExecStart=/sbin/e2scrub_all -A -r
+emergency.service: ExecStartPre=-plymouth --wait quit
+ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency
+faraday.service: ExecStart=faraday-server
+fstrim.service: ExecStart=/sbin/fstrim --listed-in /etc/fstab:/proc/self/mountinfo --verbose --quiet-unsupported
+geoclue.service: ExecStart=/usr/libexec/geoclue
+getty-static.service: ExecStart=systemctl --no-block start getty@tty2.service getty@tty3.service getty@tty4.service getty@tty5.service getty@tty6.service
+gophish.service: ExecStart=/usr/lib/gophish/gophish
+grub-common.service: ExecStartPre=/bin/sh -c '[ -s /boot/grub/grubenv ] || rm -f /boot/grub/grubenv; mkdir -p /boot/grub'
+ExecStart=grub-editenv /boot/grub/grubenv unset recordfail
+ExecStartPost=/bin/sh -c 'if grub-editenv /boot/grub/grubenv list | grep -q initrdless_boot_fallback_triggered=1; then echo "grub: GRUB_FORCE_PARTUUID set, initrdless boot paniced, fallback triggered."; fi'
+grub-install-devices.service: ExecStart=/usr/local/sbin/set-grub-install-devices
+ExecStartPost=/usr/bin/rm -v /usr/local/sbin/set-grub-install-devices
+gvmd.service: ExecStart=/usr/sbin/gvmd --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=_gvm
+haveged.service: ExecStart=/usr/sbin/haveged --Foreground --verbose=1 $DAEMON_ARGS
+ifupdown-pre.service: ExecStart=/bin/sh -c 'if [ "$CONFIGURE_INTERFACES" != "no" ] && [ -n "$(ifquery --read-environment --list --exclude=lo)" ] && [ -x /bin/udevadm ]; then udevadm settle; fi'
+ifupdown-wait-online.service: ExecStart=/usr/lib/ifupdown/wait-online.sh
+iio-sensor-proxy.service: ExecStart=/usr/libexec/iio-sensor-proxy
+inetsim.service: ExecStart=/usr/bin/inetsim $DAEMON_ARGS
+initrd-cleanup.service: ExecStart=systemctl --no-block isolate initrd-switch-root.target
+initrd-parse-etc.service: ExecStart=/usr/lib/systemd/systemd-sysroot-fstab-check
+initrd-switch-root.service: ExecStart=systemctl --no-block switch-root
+initrd-udevadm-cleanup-db.service: ExecStart=-udevadm info --cleanup-db
+ipp-usb.service: ExecStart=/usr/sbin/ipp-usb udev
+ipsec.service: ExecStart=/usr/sbin/ipsec start --nofork
+keyboard-setup.service: ExecStart=/lib/console-setup/keyboard-setup.sh
+kismet.service: ExecStart=/usr/bin/kismet --no-ncurses-wrapper
+kmod-static-nodes.service: ExecStart=/usr/bin/kmod static-nodes --format=tmpfiles --output=/run/tmpfiles.d/static-nodes.conf
+kmod.service: ExecStart=/usr/lib/systemd/systemd-modules-load
+ldconfig.service: ExecStart=/sbin/ldconfig -X
+lm-sensors.service: ExecStart=-/usr/bin/sensors -s
+ExecStart=-/usr/bin/sensors
+logrotate.service: ExecStart=/usr/sbin/logrotate /etc/logrotate.conf
+man-db.service: ExecStart=+/usr/bin/install -d -o man -g man -m 0755 /var/cache/man
+ExecStart=/usr/bin/mandb --quiet
+mariadb.service: ExecStartPre=/bin/sh -c "[ ! -e /usr/bin/galera_recovery ] && VAR= || \
+ExecStart=/usr/sbin/mariadbd $MYSQLD_OPTS $_WSREP_NEW_CLUSTER $_WSREP_START_POSITION
+ExecStartPost=/bin/rm -f /run/mysqld/wsrep-start-position /run/mysqld/wsrep-new-cluster
+ExecStartPost=!/etc/mysql/debian-start
+miredo.service: ExecStartPre=/usr/sbin/miredo-checkconf -f /etc/miredo/miredo.conf
+ExecStart=/usr/sbin/miredo -f
+mosquitto.service: ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+networking.service: ExecStart=/usr/sbin/ifup -a --read-environment
+ExecStart=-/bin/sh -c 'if [ -f /run/network/restart-hotplug ]; then /usr/sbin/ifup -a --read-environment --allow=hotplug; fi'
+NetworkManager-config-initrd.service: ExecStartPre=/bin/sh -c "rm -f /run/NetworkManager/system-connections/*"
+ExecStart=/bin/sh -c "/usr/libexec/nm-initrd-generator -- $(cat /proc/cmdline)"
+ExecStartPost=/bin/sh -c ' \
+NetworkManager-initrd.service: ExecStart=/usr/sbin/NetworkManager
+NetworkManager-wait-online-initrd.service: ExecStart=/usr/bin/nm-online -s -q
+NetworkManager-wait-online.service: ExecStart=/usr/bin/nm-online -s -q
+NetworkManager.service: ExecStart=/usr/sbin/NetworkManager --no-daemon
+nfs-blkmap.service: ExecStart=/usr/sbin/blkmapd
+nfs-idmapd.service: ExecStart=/usr/sbin/rpc.idmapd
+nfs-utils.service: ExecStart=/bin/true
+nftables.service: ExecStart=/usr/sbin/nft -f /etc/nftables.conf
+nginx.service: ExecStartPre=/usr/sbin/nginx -t -q -g 'daemon on; master_process on;'
+ExecStart=/usr/sbin/nginx -g 'daemon on; master_process on;'
+nm-priv-helper.service: ExecStart=/usr/libexec/nm-priv-helper
+nmbd.service: ExecStart=/usr/sbin/nmbd --foreground --no-process-group $NMBDOPTIONS
+notus-scanner.service: ExecStart=/usr/bin/notus-scanner --foreground
+openvpn.service: ExecStart=/bin/true
+ospd-openvas.service: ExecStart=/usr/bin/ospd-openvas --config /etc/gvm/ospd-openvas.conf --log-config /etc/gvm/ospd-logging.conf
+pam_namespace.service: ExecStart=/usr/sbin/pam_namespace_helper
+pcscd.service: ExecStart=/usr/sbin/pcscd --foreground --auto-exit $PCSCD_ARGS
+phpsessionclean.service: ExecStart=/usr/lib/php/sessionclean
+plocate-updatedb.service: ExecStart=/usr/sbin/updatedb.plocate
+plymouth-halt.service: ExecStart=/usr/sbin/plymouthd --mode=shutdown --attach-to-session
+ExecStartPost=-/usr/bin/plymouth show-splash
+plymouth-kexec.service: ExecStart=/usr/sbin/plymouthd --mode=shutdown --attach-to-session
+ExecStartPost=-/usr/bin/plymouth show-splash
+plymouth-log.service: ExecStart=-/usr/bin/plymouth update-root-fs --read-write
+plymouth-poweroff.service: ExecStart=/usr/sbin/plymouthd --mode=shutdown --attach-to-session
+ExecStartPost=-/usr/bin/plymouth show-splash
+plymouth-quit-wait.service: ExecStart=-/usr/bin/plymouth --wait
+plymouth-quit.service: ExecStart=-/usr/bin/plymouth quit
+plymouth-reboot.service: ExecStart=/usr/sbin/plymouthd --mode=reboot --attach-to-session
+ExecStartPost=-/usr/bin/plymouth show-splash
+plymouth-start.service: ExecStart=/usr/sbin/plymouthd --mode=boot --pid-file=/run/plymouth/pid --attach-to-session
+ExecStartPost=-/usr/bin/plymouth show-splash
+plymouth-switch-root-initramfs.service: ExecStart=-/usr/bin/plymouth update-root-fs --new-root-dir=/run/initramfs
+plymouth-switch-root.service: ExecStart=-/usr/bin/plymouth update-root-fs --new-root-dir=/sysroot
+polkit.service: ExecStart=/usr/lib/polkit-1/polkitd --no-debug --log-level=notice
+portmap.service: ExecStart=/usr/sbin/rpcbind -f $OPTIONS
+postgresql.service: ExecStart=/bin/true
+procps.service: ExecStart=/usr/lib/systemd/systemd-sysctl
+ptunnel.service: ExecStart=/etc/init.d/ptunnel start
+quotaon-root.service: ExecStart=/usr/sbin/quotaon -ug /
+rc-local.service: ExecStart=/etc/rc.local start
+redis-server.service: ExecStart=/usr/bin/redis-server /etc/redis/redis.conf --supervised systemd --daemonize no
+redsocks.service: ExecStartPre=/usr/sbin/redsocks -t -c ${CONFFILE}
+ExecStart=/usr/sbin/redsocks -c ${CONFFILE}
+regenerate-ssh-host-keys.service: ExecStart=/usr/bin/ssh-keygen -A
+rescue.service: ExecStartPre=-plymouth --wait quit
+ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue
+rpc-gssd.service: ExecStart=/usr/sbin/rpc.gssd
+rpc-statd-notify.service: ExecStart=-/usr/sbin/sm-notify
+rpc-statd.service: ExecStart=/usr/sbin/rpc.statd
+rpc-svcgssd.service: ExecStart=/usr/sbin/rpc.svcgssd
+rsync.service: ExecStart=/usr/bin/rsync --daemon --no-detach
+rtkit-daemon.service: ExecStart=/usr/libexec/rtkit-daemon
+smartd.service: ExecStart=/usr/sbin/smartd -n $smartd_opts
+smbd.service: ExecStartPre=/usr/share/samba/update-apparmor-samba-profile
+ExecStart=/usr/sbin/smbd --foreground --no-process-group $SMBDOPTIONS
+snmpd.service: ExecStart=/usr/sbin/snmpd -LOw -u Debian-snmp -g Debian-snmp -I -smux,mteTrigger,mteTriggerConf -f
+speech-dispatcher.service: ExecStart=/usr/bin/speech-dispatcher -d -t 0 --pid-file /run/speech-dispatcher/speech-dispatcher.pid
+ssh.service: ExecStartPre=/usr/sbin/sshd -t
+ExecStart=/usr/sbin/sshd -D $SSHD_OPTS
+sshd-keygen.service: ExecStart=ssh-keygen -A
+sslh.service: ExecStart=/usr/sbin/sslh --foreground $DAEMON_OPTS
+stunnel4.service: ExecStart=/etc/init.d/stunnel4 start
+sysstat-collect.service: ExecStart=/usr/libexec/sysstat/sa1 1 1
+sysstat-rotate.service: ExecStart=/usr/libexec/sysstat/sa1 --rotate
+sysstat-summary.service: ExecStart=/usr/libexec/sysstat/sa2 -A
+sysstat.service: ExecStart=/usr/libexec/sysstat/sa1 --boot
+system-update-cleanup.service: ExecStart=rm -fv /system-update /etc/system-update
+systemd-ask-password-console.service: ExecStart=systemd-tty-ask-password-agent --watch --console
+systemd-ask-password-plymouth.service: ExecStart=/usr/bin/systemd-tty-ask-password-agent --watch --plymouth
+systemd-ask-password-wall.service: ExecStartPre=-systemctl stop --no-block systemd-ask-password-console.path systemd-ask-password-console.service systemd-ask-password-plymouth.path systemd-ask-password-plymouth.service
+ExecStart=systemd-tty-ask-password-agent --wall
+systemd-battery-check.service: ExecStart=/usr/lib/systemd/systemd-battery-check
+systemd-binfmt.service: ExecStart=/usr/lib/systemd/systemd-binfmt
+systemd-boot-check-no-failures.service: ExecStart=/usr/lib/systemd/systemd-boot-check-no-failures
+systemd-bsod.service: ExecStart=/usr/lib/systemd/systemd-bsod --continuous
+systemd-confext-initrd.service: ExecStart=systemd-confext refresh
+systemd-confext.service: ExecStart=systemd-confext refresh
+systemd-factory-reset-complete.service: ExecStart=/usr/lib/systemd/systemd-factory-reset complete --retrigger
+systemd-factory-reset-request.service: ExecStart=/usr/lib/systemd/systemd-factory-reset request
+systemd-firstboot.service: ExecStart=systemd-firstboot --prompt-locale --prompt-keymap-auto --prompt-timezone --prompt-root-password --mute-console=yes
+systemd-fsck-root.service: ExecStart=/usr/lib/systemd/systemd-fsck
+systemd-growfs-root.service: ExecStart=/usr/lib/systemd/systemd-growfs /
+systemd-hibernate-clear.service: ExecStart=/usr/lib/systemd/systemd-hibernate-resume --clear
+systemd-hibernate-resume.service: ExecStart=/usr/lib/systemd/systemd-hibernate-resume
+systemd-hibernate.service: ExecStart=/usr/lib/systemd/systemd-sleep hibernate
+systemd-hwdb-update.service: ExecStart=systemd-hwdb update
+systemd-hybrid-sleep.service: ExecStart=/usr/lib/systemd/systemd-sleep hybrid-sleep
+systemd-journal-catalog-update.service: ExecStart=journalctl --update-catalog
+systemd-journal-flush.service: ExecStart=journalctl --flush
+systemd-journald.service: ExecStart=/usr/lib/systemd/systemd-journald
+systemd-machine-id-commit.service: ExecStart=systemd-machine-id-setup --commit
+systemd-network-generator.service: ExecStart=/usr/lib/systemd/systemd-network-generator
+systemd-networkd-persistent-storage.service: ExecStart=networkctl persistent-storage yes
+systemd-networkd-wait-online.service: ExecStart=/usr/lib/systemd/systemd-networkd-wait-online
+systemd-networkd.service: ExecStart=/usr/lib/systemd/systemd-networkd
+systemd-pcrfs-root.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful --file-system=/
+systemd-pcrlock-file-system.service: ExecStart=/usr/lib/systemd/systemd-pcrlock lock-file-system
+systemd-pcrlock-firmware-code.service: ExecStart=/usr/lib/systemd/systemd-pcrlock lock-firmware-code
+systemd-pcrlock-firmware-config.service: ExecStart=/usr/lib/systemd/systemd-pcrlock lock-firmware-config
+systemd-pcrlock-machine-id.service: ExecStart=/usr/lib/systemd/systemd-pcrlock lock-machine-id
+systemd-pcrlock-make-policy.service: ExecStart=/usr/lib/systemd/systemd-pcrlock make-policy --location=770
+systemd-pcrlock-secureboot-authority.service: ExecStart=/usr/lib/systemd/systemd-pcrlock lock-secureboot-authority
+systemd-pcrlock-secureboot-policy.service: ExecStart=/usr/lib/systemd/systemd-pcrlock lock-secureboot-policy
+systemd-pcrmachine.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful --machine-id
+systemd-pcrnvdone.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful --pcr=kernel-initrd --event-type=nvpcr-separator nvpcr-separator
+systemd-pcrphase-factory-reset.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful factory-reset
+systemd-pcrphase-initrd.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful enter-initrd
+systemd-pcrphase-storage-target-mode.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful storage-target-mode-start
+systemd-pcrphase-sysinit.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful sysinit
+systemd-pcrphase.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful ready
+systemd-pcrproduct.service: ExecStart=/usr/lib/systemd/systemd-pcrextend --graceful --product-id
+systemd-pstore.service: ExecStart=/usr/lib/systemd/systemd-pstore
+systemd-quotacheck-root.service: ExecStart=/usr/lib/systemd/systemd-quotacheck /
+systemd-random-seed.service: ExecStart=/usr/lib/systemd/systemd-random-seed load
+systemd-remount-fs.service: ExecStart=/usr/lib/systemd/systemd-remount-fs
+systemd-rfkill.service: ExecStart=/usr/lib/systemd/systemd-rfkill
+systemd-storagetm.service: ExecStart=/usr/lib/systemd/systemd-storagetm --all
+systemd-suspend-then-hibernate.service: ExecStart=/usr/lib/systemd/systemd-sleep suspend-then-hibernate
+systemd-suspend.service: ExecStart=/usr/lib/systemd/systemd-sleep suspend
+systemd-sysext-initrd.service: ExecStart=systemd-sysext refresh
+systemd-sysext.service: ExecStart=systemd-sysext refresh
+systemd-sysusers.service: ExecStart=systemd-sysusers
+systemd-time-wait-sync.service: ExecStart=/usr/lib/systemd/systemd-time-wait-sync
+systemd-tmpfiles-clean.service: ExecStart=systemd-tmpfiles --clean
+systemd-tmpfiles-setup-dev-early.service: ExecStart=systemd-tmpfiles --prefix=/dev --create --boot --graceful
+systemd-tmpfiles-setup-dev.service: ExecStart=systemd-tmpfiles --prefix=/dev --create --boot
+systemd-tmpfiles-setup.service: ExecStart=systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev
+systemd-tpm2-clear.service: ExecStart=/usr/lib/systemd/systemd-tpm2-clear --graceful
+systemd-tpm2-setup-early.service: ExecStart=/usr/lib/systemd/systemd-tpm2-setup --early=yes --graceful
+systemd-tpm2-setup.service: ExecStart=/usr/lib/systemd/systemd-tpm2-setup --graceful
+systemd-udev-load-credentials.service: ExecStart=udevadm control --load-credentials
+systemd-udev-settle.service: ExecStart=udevadm settle
+systemd-udev-trigger.service: ExecStart=-udevadm trigger --type=all --action=add --prioritized-subsystem=module,block,tpmrm,net,tty,input
+systemd-udevd.service: ExecStart=/usr/lib/systemd/systemd-udevd
+systemd-update-done.service: ExecStart=/usr/lib/systemd/systemd-update-done
+systemd-user-sessions.service: ExecStart=/usr/lib/systemd/systemd-user-sessions start
+systemd-volatile-root.service: ExecStart=/usr/lib/systemd/systemd-volatile-root yes /sysroot
+udisks2.service: ExecStart=/usr/libexec/udisks2/udisksd
+upower.service: ExecStart=/usr/libexec/upowerd
+usbmuxd.service: ExecStart=/usr/sbin/usbmuxd --user usbmux --systemd
+virtualbox-guest-utils.service: ExecStart=/etc/init.d/virtualbox-guest-utils start
+wpa_supplicant.service: ExecStart=/usr/sbin/wpa_supplicant -u -s -O "DIR=/run/wpa_supplicant GROUP=netdev"
+wtmpdb-update-boot.service: ExecStart=/usr/bin/wtmpdb boot
+
+## Kernel & CVE Hint
+Kernel version: 6.17.10+kali-amd64
+Action: Search for public exploits/CVEs for this kernel version on Exploit-DB, Google, or search engines.
+
+Scan complete.
