@@ -1,5 +1,10 @@
 # Linux Privilege Escalation Scanner
 
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![GitHub Actions](https://github.com/gauravmalhotra3300-hub/linux-privesc-scanner/workflows/Python%20CI/CD/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-stable-brightgreen)
+
 A comprehensive Python tool for identifying potential privilege escalation vulnerabilities and misconfigurations on Linux systems. This scanner helps security professionals, system administrators, and penetration testers discover attack vectors for privilege escalation in a controlled and educational manner.
 
 ## Overview
